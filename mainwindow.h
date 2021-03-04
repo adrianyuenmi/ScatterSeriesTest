@@ -21,6 +21,8 @@ private slots:
     // Auto-connected
     void on_pushButton_Generate_clicked();
 
+    void on_pushButton_GenerateOut_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

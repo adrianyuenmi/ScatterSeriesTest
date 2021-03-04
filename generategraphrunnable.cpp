@@ -19,10 +19,12 @@
 GenerateGraphRunnable::
 GenerateGraphRunnable(unsigned int numDataPoints,
                       unsigned int minDataValue,
-                      unsigned int maxDataValue)
+                      unsigned int maxDataValue,
+                      bool hasDataOutOfRange)
     : mNumDataPoints(numDataPoints)
     , mMinDataValue(minDataValue)
     , mMaxDataValue(maxDataValue)
+    , mHasDataOutOfRange(hasDataOutOfRange)
 {
 }
 
@@ -63,14 +65,17 @@ void GenerateGraphRunnable::run()
     series->setPointsVisible(true);
 
     // generate data points here
-    for (int i = 1; i <= mNumDataPoints-1; i++)
+    for (unsigned int i = 1; i <= mNumDataPoints-1; i++)
     {
         unsigned int value = QRandomGenerator::global()->bounded(mMinDataValue,
                                                                  mMaxDataValue);
         series->append(i, value);
         //axisY->setRange(6500, 10500);
     }
-    series->append(mNumDataPoints, 16383);
+    if (mHasDataOutOfRange)
+        series->append(mNumDataPoints, 16383);
+    else
+        series->append(mNumDataPoints, mMaxDataValue);
 
     //chart->addSeries(series.get());
     chart->addSeries(series);

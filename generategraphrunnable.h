@@ -10,7 +10,8 @@ class GenerateGraphRunnable : public QObject, public QRunnable
 public:
     GenerateGraphRunnable(unsigned int numDataPoints,
                           unsigned int minDataValue,
-                          unsigned int maxDataValue);
+                          unsigned int maxDataValue,
+                          bool hasDataOutOfRange);
 
     void run() override;
 
@@ -21,6 +22,7 @@ private:
     unsigned int mNumDataPoints;
     unsigned int mMinDataValue;
     unsigned int mMaxDataValue;
+    bool mHasDataOutOfRange;
 };
 
 #endif // GENERATEGRAPHRUNNABLE_H
