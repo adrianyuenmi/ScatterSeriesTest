@@ -8,6 +8,8 @@ Compiler: `Microsoft Visual C++ Compiler 16.8.31019.35 (amd64)`
 
 OS: `Microsoft Windows 10 Pro 64-bit (version 10.0.18363 Build 18363)`
 
+This is now a bug reported to Qt at: https://bugreports.qt.io/browse/QTBUG-91546
+
 # Use case
 
 I want to generate a `QImage` of a line chart in a **worker thread**.
